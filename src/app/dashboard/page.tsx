@@ -12,19 +12,17 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   BarChart,
-  Bell,
-  Calendar,
   CreditCard,
   Download,
-  Layers,
-  PieChart,
   Plus,
-  User,
   Users,
+  Calendar,
   Video,
   Mic,
   ScreenShare,
   Phone,
+  User,
+  PieChart,
 } from "lucide-react";
 import {
   LineChart,
@@ -53,35 +51,11 @@ const data = [
 
 export default function Dashboard() {
   const [activeTab, setActiveTab] = useState("overview");
-  const [activeView ] = useState("dashboard");
+  const [activeView] = useState("dashboard");
 
   return (
     <div className="flex min-h-screen w-full bg-gray-100 dark:bg-gray-900">
       <div className="flex flex-1 flex-col">
-        {/* Header */}
-        <header className="flex h-14 items-center justify-between border-b bg-white px-4 dark:bg-gray-800">
-          <Button variant="ghost" size="icon" className="md:hidden">
-            <Layers className="h-6 w-6" />
-            <span className="sr-only">Toggle menu</span>
-          </Button>
-          <div className="flex items-center gap-2 md:hidden">
-            <Layers className="h-6 w-6 text-blue-600" />
-            <span className="text-lg font-semibold">Dashboard</span>
-          </div>
-          <div className="flex items-center gap-4">
-            <Button variant="ghost" size="icon">
-              <Bell className="h-5 w-5" />
-              <span className="sr-only">Notifications</span>
-            </Button>
-            <div className="h-8 w-8 rounded-full bg-gray-200 md:hidden">
-              <img
-                src="/placeholder.svg?height=32&width=32"
-                alt="User avatar"
-                className="h-full w-full rounded-full object-cover"
-              />
-            </div>
-          </div>
-        </header>
 
         {/* Contenido */}
         <main className="flex-1 overflow-auto p-4">
@@ -115,9 +89,7 @@ export default function Dashboard() {
                   <TabsTrigger value="overview">Overview</TabsTrigger>
                   <TabsTrigger value="analytics">Analytics</TabsTrigger>
                   <TabsTrigger value="reports">Reports</TabsTrigger>
-                  <TabsTrigger value="notifications">
-                    Notifications
-                  </TabsTrigger>
+                  <TabsTrigger value="notifications">Notifications</TabsTrigger>
                 </TabsList>
                 <TabsContent value="overview" className="space-y-4">
                   <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
