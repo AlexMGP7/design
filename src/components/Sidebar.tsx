@@ -9,7 +9,8 @@ import {
   Settings,
   User,
   Clipboard,
-  CalendarDays, // Icono para "Actividades"
+  MessageSquare, // ícono para el chat
+  CalendarDays,
 } from "lucide-react";
 import React from "react";
 
@@ -71,6 +72,18 @@ export default function Sidebar({
                 Formulario
               </Button>
             </Link>
+            <Link href="/chat">
+              <Button
+                variant="ghost"
+                className={`w-full justify-start gap-2 ${
+                  activeView === "chat" ? "bg-gray-100 dark:bg-gray-700" : ""
+                }`}
+                onClick={() => handleClick("chat")}
+              >
+                <MessageSquare className="h-4 w-4" />
+                Chat
+              </Button>
+            </Link>
             <Link href="/actividades">
               <Button
                 variant="ghost"
@@ -85,7 +98,6 @@ export default function Sidebar({
             </Link>
           </div>
         </div>
-
         {/* Sección Reuniones */}
         <div className="px-4 py-2">
           <h2 className="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
@@ -106,7 +118,6 @@ export default function Sidebar({
             </Link>
           </div>
         </div>
-
         {/* Sección General */}
         <div className="px-4 py-2">
           <h2 className="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
