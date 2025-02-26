@@ -3,12 +3,21 @@
 import { Button } from "@/components/ui/button";
 import { Layers, Bell } from "lucide-react";
 
-export default function Header() {
+interface HeaderProps {
+  onToggleSidebar: () => void;
+}
+
+export default function Header({ onToggleSidebar }: HeaderProps) {
   return (
     <header className="flex h-14 items-center justify-between border-b bg-white px-4 dark:bg-gray-800">
-      <Button variant="ghost" size="icon" className="md:hidden">
+      <Button
+        variant="ghost"
+        size="icon"
+        className="md:hidden"
+        onClick={onToggleSidebar}
+      >
         <Layers className="h-6 w-6" />
-        <span className="sr-only">Toggle menu</span>
+        <span className="sr-only">Mostrar menú</span>
       </Button>
       <div className="flex items-center gap-2 md:hidden">
         <Layers className="h-6 w-6 text-blue-600" />
@@ -17,7 +26,7 @@ export default function Header() {
       <div className="flex items-center gap-4">
         <Button variant="ghost" size="icon">
           <Bell className="h-5 w-5" />
-          <span className="sr-only">Notifications</span>
+          <span className="sr-only">Notificaciones</span>
         </Button>
         <div className="h-8 w-8 rounded-full bg-gray-200 md:hidden">
           <img

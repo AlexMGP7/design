@@ -14,11 +14,16 @@ import React from "react";
 interface SidebarProps {
   activeView: string;
   setActiveView: React.Dispatch<React.SetStateAction<string>>;
+  isOpen: boolean;
 }
 
-export default function Sidebar({ activeView, setActiveView }: SidebarProps) {
+export default function Sidebar({
+  activeView,
+  setActiveView,
+  isOpen,
+}: SidebarProps) {
   return (
-    <div className="hidden w-64 flex-col bg-white dark:bg-gray-800 md:flex">
+    <div className={`${isOpen ? "block" : "hidden"} w-64 flex-col bg-white dark:bg-gray-800 md:flex`}>
       {/* Encabezado del Sidebar */}
       <div className="flex h-14 items-center border-b px-4">
         <div className="flex items-center gap-2">
