@@ -8,7 +8,7 @@ import {
   Video,
   Settings,
   User,
-  Clipboard, // importamos un ícono para el formulario
+  Clipboard,
 } from "lucide-react";
 import React from "react";
 
@@ -16,13 +16,20 @@ interface SidebarProps {
   activeView: string;
   setActiveView: React.Dispatch<React.SetStateAction<string>>;
   isOpen: boolean;
+  onLinkClick: () => void;
 }
 
 export default function Sidebar({
   activeView,
   setActiveView,
   isOpen,
+  onLinkClick,
 }: SidebarProps) {
+  const handleClick = (view: string) => {
+    setActiveView(view);
+    onLinkClick();
+  };
+
   return (
     <div className={`${isOpen ? "block" : "hidden"} w-64 flex-col bg-white dark:bg-gray-800 md:flex`}>
       {/* Encabezado del Sidebar */}
@@ -33,7 +40,7 @@ export default function Sidebar({
         </div>
       </div>
       <nav className="flex-1 overflow-auto py-4">
-        {/* Sección Main */}
+        {/* Sección Principal */}
         <div className="px-4 py-2">
           <h2 className="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
             Principal
@@ -42,9 +49,8 @@ export default function Sidebar({
             <Link href="/dashboard">
               <Button
                 variant="ghost"
-                className={`w-full justify-start gap-2 ${activeView === "dashboard" ? "bg-gray-100 dark:bg-gray-700" : ""
-                  }`}
-                onClick={() => setActiveView("dashboard")}
+                className={`w-full justify-start gap-2 ${activeView === "dashboard" ? "bg-gray-100 dark:bg-gray-700" : ""}`}
+                onClick={() => handleClick("dashboard")}
               >
                 <LayoutDashboard className="h-4 w-4" />
                 Dashboard
@@ -54,7 +60,7 @@ export default function Sidebar({
               <Button
                 variant="ghost"
                 className="w-full justify-start gap-2"
-                onClick={() => setActiveView("formulario")}
+                onClick={() => handleClick("formulario")}
               >
                 <Clipboard className="h-4 w-4" />
                 Formulario
@@ -62,7 +68,7 @@ export default function Sidebar({
             </Link>
           </div>
         </div>
-        {/* Sección Meetings */}
+        {/* Sección Reuniones */}
         <div className="px-4 py-2">
           <h2 className="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
             Reuniones
@@ -72,7 +78,7 @@ export default function Sidebar({
               <Button
                 variant="ghost"
                 className="w-full justify-start gap-2"
-                onClick={() => setActiveView("virtualRoom")}
+                onClick={() => handleClick("virtualRoom")}
               >
                 <Video className="h-4 w-4" />
                 Sala Virtual
@@ -90,7 +96,7 @@ export default function Sidebar({
               <Button
                 variant="ghost"
                 className="w-full justify-start gap-2"
-                onClick={() => setActiveView("settings")}
+                onClick={() => handleClick("settings")}
               >
                 <Settings className="h-4 w-4" />
                 Configuración
@@ -100,13 +106,12 @@ export default function Sidebar({
               <Button
                 variant="ghost"
                 className="w-full justify-start gap-2"
-                onClick={() => setActiveView("profile")}
+                onClick={() => handleClick("profile")}
               >
                 <User className="h-4 w-4" />
                 Perfil
               </Button>
             </Link>
-
           </div>
         </div>
       </nav>
@@ -116,15 +121,13 @@ export default function Sidebar({
           <div className="h-9 w-9 rounded-full bg-gray-200">
             <img
               src="/placeholder.svg?height=36&width=36"
-              alt="User avatar"
+              alt="Avatar de usuario"
               className="h-full w-full rounded-full object-cover"
             />
           </div>
           <div>
             <p className="text-sm font-medium">John Doe</p>
-            <p className="text-xs text-gray-500 dark:text-gray-400">
-              john@example.com
-            </p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">john@example.com</p>
           </div>
         </div>
       </div>

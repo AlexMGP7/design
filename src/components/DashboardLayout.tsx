@@ -18,11 +18,10 @@ export default function DashboardLayout({
         activeView={activeView}
         setActiveView={setActiveView}
         isOpen={isSidebarOpen}
+        onLinkClick={() => setIsSidebarOpen(false)}
       />
       <div className="flex-1 flex flex-col">
-        <Header
-          onToggleSidebar={() => setIsSidebarOpen((prev) => !prev)}
-        />
+        <Header onToggleSidebar={() => setIsSidebarOpen((prev) => !prev)} />
         <main className="flex-1">{children}</main>
       </div>
     </div>
