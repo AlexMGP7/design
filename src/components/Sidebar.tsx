@@ -11,9 +11,9 @@ import {
   Clipboard,
   MessageSquare,
   CalendarDays,
-  ClipboardList, // ícono para Planificación
+  ClipboardList,
 } from "lucide-react";
-import React from "react";
+import React, { useState } from "react";
 
 interface SidebarProps {
   activeView: string;
@@ -28,6 +28,9 @@ export default function Sidebar({
   isOpen,
   onLinkClick,
 }: SidebarProps) {
+  // Estado local para el rol: "empleado" o "consultor"
+  const [role, setRole] = useState<"empleado" | "consultor">("empleado");
+
   const handleClick = (view: string) => {
     setActiveView(view);
     onLinkClick();
@@ -42,6 +45,7 @@ export default function Sidebar({
           <span className="text-lg font-semibold">DO</span>
         </div>
       </div>
+
       <nav className="flex-1 overflow-auto py-4">
         {/* Sección Principal */}
         <div className="px-4 py-2">
@@ -49,34 +53,70 @@ export default function Sidebar({
             Principal
           </h2>
           <div className="space-y-1">
-            <Link href="/dashboard">
+            {role === "empleado" ? (
+              <Link href="/inicio">
+                <Button
+                  variant="ghost"
+                  className={`w-full justify-start gap-2 ${activeView === "inicio" ? "bg-gray-100 dark:bg-gray-700" : ""}`}
+                  onClick={() => handleClick("inicio")}
+                >
+                  <LayoutDashboard className="h-4 w-4" />
+                  Inicio
+                </Button>
+              </Link>
+            ) : (
+              <Link href="/dashboard">
+                <Button
+                  variant="ghost"
+                  className={`w-full justify-start gap-2 ${activeView === "dashboard" ? "bg-gray-100 dark:bg-gray-700" : ""}`}
+                  onClick={() => handleClick("dashboard")}
+                >
+                  <LayoutDashboard className="h-4 w-4" />
+                  Dashboard
+                </Button>
+              </Link>
+            )}
+            {role === "empleado" ? (
+              <Link href="/formulario">
+                <Button
+                  variant="ghost"
+                  className={`w-full justify-start gap-2 ${activeView === "formulario" ? "bg-gray-100 dark:bg-gray-700" : ""}`}
+                  onClick={() => handleClick("formulario")}
+                >
+                  <Clipboard className="h-4 w-4" />
+                  Formulario
+                </Button>
+              </Link>
+            ) : (
+              <Link href="/planificacion">
+                <Button
+                  variant="ghost"
+                  className={`w-full justify-start gap-2 ${activeView === "planificacion" ? "bg-gray-100 dark:bg-gray-700" : ""}`}
+                  onClick={() => handleClick("planificacion")}
+                >
+                  <ClipboardList className="h-4 w-4" />
+                  Planificación
+                </Button>
+              </Link>
+            )}
+            <Link href="/actividades">
               <Button
                 variant="ghost"
-                className={`w-full justify-start gap-2 ${activeView === "dashboard" ? "bg-gray-100 dark:bg-gray-700" : ""}`}
-                onClick={() => handleClick("dashboard")}
+                className={`w-full justify-start gap-2 ${activeView === "actividades" ? "bg-gray-100 dark:bg-gray-700" : ""}`}
+                onClick={() => handleClick("actividades")}
               >
-                <LayoutDashboard className="h-4 w-4" />
-                Dashboard
+                <CalendarDays className="h-4 w-4" />
+                Actividades
               </Button>
             </Link>
-            <Link href="/formulario">
+            <Link href="/virtual-room">
               <Button
                 variant="ghost"
-                className={`w-full justify-start gap-2 ${activeView === "formulario" ? "bg-gray-100 dark:bg-gray-700" : ""}`}
-                onClick={() => handleClick("formulario")}
+                className={`w-full justify-start gap-2 ${activeView === "virtualRoom" ? "bg-gray-100 dark:bg-gray-700" : ""}`}
+                onClick={() => handleClick("virtualRoom")}
               >
-                <Clipboard className="h-4 w-4" />
-                Formulario
-              </Button>
-            </Link>
-            <Link href="/planificacion">
-              <Button
-                variant="ghost"
-                className={`w-full justify-start gap-2 ${activeView === "planificacion" ? "bg-gray-100 dark:bg-gray-700" : ""}`}
-                onClick={() => handleClick("planificacion")}
-              >
-                <ClipboardList className="h-4 w-4" />
-                Planificación
+                <Video className="h-4 w-4" />
+                Sala Virtual
               </Button>
             </Link>
             <Link href="/chat">
@@ -89,36 +129,9 @@ export default function Sidebar({
                 Chat
               </Button>
             </Link>
-            <Link href="/actividades">
-              <Button
-                variant="ghost"
-                className={`w-full justify-start gap-2 ${activeView === "actividades" ? "bg-gray-100 dark:bg-gray-700" : ""}`}
-                onClick={() => handleClick("actividades")}
-              >
-                <CalendarDays className="h-4 w-4" />
-                Actividades
-              </Button>
-            </Link>
           </div>
         </div>
-        {/* Sección Reuniones */}
-        <div className="px-4 py-2">
-          <h2 className="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
-            Reuniones
-          </h2>
-          <div className="space-y-1">
-            <Link href="/virtual-room">
-              <Button
-                variant="ghost"
-                className={`w-full justify-start gap-2 ${activeView === "virtualRoom" ? "bg-gray-100 dark:bg-gray-700" : ""}`}
-                onClick={() => handleClick("virtualRoom")}
-              >
-                <Video className="h-4 w-4" />
-                Sala Virtual
-              </Button>
-            </Link>
-          </div>
-        </div>
+
         {/* Sección General */}
         <div className="px-4 py-2">
           <h2 className="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
@@ -147,7 +160,28 @@ export default function Sidebar({
             </Link>
           </div>
         </div>
+
+        {/* Selector de rol colocado justo encima del footer */}
+        <div className="px-4 py-2 border-t border-gray-200 dark:border-gray-700">
+          <div className="flex items-center justify-around">
+            <Button
+              variant={role === "empleado" ? "default" : "outline"}
+              size="sm"
+              onClick={() => setRole("empleado")}
+            >
+              Empleado
+            </Button>
+            <Button
+              variant={role === "consultor" ? "default" : "outline"}
+              size="sm"
+              onClick={() => setRole("consultor")}
+            >
+              Consultor
+            </Button>
+          </div>
+        </div>
       </nav>
+
       {/* Footer del Sidebar */}
       <div className="border-t p-4">
         <div className="flex items-center gap-3">

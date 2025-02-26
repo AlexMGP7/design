@@ -135,7 +135,7 @@ export default function PlanificacionPage() {
 
                 {/* Columnas de Fechas (Timeline) */}
                 <div className="relative flex">
-                  {columnas.map((col, index) => (
+                  {columnas.map((col) => (
                     <div
                       key={col}
                       className="w-16 h-14 border-r border-gray-200 dark:border-gray-700"
