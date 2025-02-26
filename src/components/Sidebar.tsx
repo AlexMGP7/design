@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
   Layers,
@@ -14,13 +14,14 @@ import {
   Settings,
   User,
 } from "lucide-react";
+import React from "react";
 
 interface SidebarProps {
   activeView: string;
-  setActiveView: (view: string) => void;
+  setActiveView: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ activeView, setActiveView }) => {
+export default function Sidebar({ activeView, setActiveView }: SidebarProps) {
   return (
     <div className="hidden w-64 flex-col bg-white dark:bg-gray-800 md:flex">
       <div className="flex h-14 items-center border-b px-4">
@@ -35,16 +36,18 @@ const Sidebar: React.FC<SidebarProps> = ({ activeView, setActiveView }) => {
             Main
           </h2>
           <div className="space-y-1">
-            <Button
-              variant="ghost"
-              className={`w-full justify-start gap-2 ${
-                activeView === "dashboard" ? "bg-gray-100 dark:bg-gray-700" : ""
-              }`}
-              onClick={() => setActiveView("dashboard")}
-            >
-              <LayoutDashboard className="h-4 w-4" />
-              Dashboard
-            </Button>
+            <Link href="/dashboard">
+              <Button
+                variant="ghost"
+                className={`w-full justify-start gap-2 ${
+                  activeView === "dashboard" ? "bg-gray-100 dark:bg-gray-700" : ""
+                }`}
+                onClick={() => setActiveView("dashboard")}
+              >
+                <LayoutDashboard className="h-4 w-4" />
+                Dashboard
+              </Button>
+            </Link>
             <Button variant="ghost" className="w-full justify-start gap-2">
               <BarChart className="h-4 w-4" />
               Analytics
@@ -64,14 +67,12 @@ const Sidebar: React.FC<SidebarProps> = ({ activeView, setActiveView }) => {
             Meetings
           </h2>
           <div className="space-y-1">
-            <Button
-              variant="ghost"
-              className="w-full justify-start gap-2"
-              onClick={() => setActiveView("virtualRoom")}
-            >
-              <Video className="h-4 w-4" />
-              Virtual Room
-            </Button>
+            <Link href="/virtual-room">
+              <Button variant="ghost" className="w-full justify-start gap-2">
+                <Video className="h-4 w-4" />
+                Virtual Room
+              </Button>
+            </Link>
             <Button variant="ghost" className="w-full justify-start gap-2">
               <Calendar className="h-4 w-4" />
               Schedule Meeting
@@ -121,6 +122,4 @@ const Sidebar: React.FC<SidebarProps> = ({ activeView, setActiveView }) => {
       </div>
     </div>
   );
-};
-
-export default Sidebar;
+}
