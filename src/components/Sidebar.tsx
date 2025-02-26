@@ -36,19 +36,28 @@ export default function Sidebar({
         {/* Sección Main */}
         <div className="px-4 py-2">
           <h2 className="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
-            Main
+            Principal
           </h2>
           <div className="space-y-1">
             <Link href="/dashboard">
               <Button
                 variant="ghost"
-                className={`w-full justify-start gap-2 ${
-                  activeView === "dashboard" ? "bg-gray-100 dark:bg-gray-700" : ""
-                }`}
+                className={`w-full justify-start gap-2 ${activeView === "dashboard" ? "bg-gray-100 dark:bg-gray-700" : ""
+                  }`}
                 onClick={() => setActiveView("dashboard")}
               >
                 <LayoutDashboard className="h-4 w-4" />
                 Dashboard
+              </Button>
+            </Link>
+            <Link href="/formulario">
+              <Button
+                variant="ghost"
+                className="w-full justify-start gap-2"
+                onClick={() => setActiveView("formulario")}
+              >
+                <Clipboard className="h-4 w-4" />
+                Formulario
               </Button>
             </Link>
           </div>
@@ -56,7 +65,7 @@ export default function Sidebar({
         {/* Sección Meetings */}
         <div className="px-4 py-2">
           <h2 className="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
-            Meetings
+            Reuniones
           </h2>
           <div className="space-y-1">
             <Link href="/virtual-room">
@@ -66,7 +75,7 @@ export default function Sidebar({
                 onClick={() => setActiveView("virtualRoom")}
               >
                 <Video className="h-4 w-4" />
-                Virtual Room
+                Sala Virtual
               </Button>
             </Link>
           </div>
@@ -84,7 +93,7 @@ export default function Sidebar({
                 onClick={() => setActiveView("settings")}
               >
                 <Settings className="h-4 w-4" />
-                Settings
+                Configuración
               </Button>
             </Link>
             <Link href="/profile">
@@ -94,19 +103,10 @@ export default function Sidebar({
                 onClick={() => setActiveView("profile")}
               >
                 <User className="h-4 w-4" />
-                Profile
+                Perfil
               </Button>
             </Link>
-            <Link href="/formulario">
-              <Button
-                variant="ghost"
-                className="w-full justify-start gap-2"
-                onClick={() => setActiveView("formulario")}
-              >
-                <Clipboard className="h-4 w-4" />
-                Formulario
-              </Button>
-            </Link>
+
           </div>
         </div>
       </nav>
