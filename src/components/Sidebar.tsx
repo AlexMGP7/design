@@ -9,8 +9,9 @@ import {
   Settings,
   User,
   Clipboard,
-  MessageSquare, // ícono para el chat
+  MessageSquare,
   CalendarDays,
+  ClipboardList, // ícono para Planificación
 } from "lucide-react";
 import React from "react";
 
@@ -51,9 +52,7 @@ export default function Sidebar({
             <Link href="/dashboard">
               <Button
                 variant="ghost"
-                className={`w-full justify-start gap-2 ${
-                  activeView === "dashboard" ? "bg-gray-100 dark:bg-gray-700" : ""
-                }`}
+                className={`w-full justify-start gap-2 ${activeView === "dashboard" ? "bg-gray-100 dark:bg-gray-700" : ""}`}
                 onClick={() => handleClick("dashboard")}
               >
                 <LayoutDashboard className="h-4 w-4" />
@@ -63,21 +62,27 @@ export default function Sidebar({
             <Link href="/formulario">
               <Button
                 variant="ghost"
-                className={`w-full justify-start gap-2 ${
-                  activeView === "formulario" ? "bg-gray-100 dark:bg-gray-700" : ""
-                }`}
+                className={`w-full justify-start gap-2 ${activeView === "formulario" ? "bg-gray-100 dark:bg-gray-700" : ""}`}
                 onClick={() => handleClick("formulario")}
               >
                 <Clipboard className="h-4 w-4" />
                 Formulario
               </Button>
             </Link>
+            <Link href="/planificacion">
+              <Button
+                variant="ghost"
+                className={`w-full justify-start gap-2 ${activeView === "planificacion" ? "bg-gray-100 dark:bg-gray-700" : ""}`}
+                onClick={() => handleClick("planificacion")}
+              >
+                <ClipboardList className="h-4 w-4" />
+                Planificación
+              </Button>
+            </Link>
             <Link href="/chat">
               <Button
                 variant="ghost"
-                className={`w-full justify-start gap-2 ${
-                  activeView === "chat" ? "bg-gray-100 dark:bg-gray-700" : ""
-                }`}
+                className={`w-full justify-start gap-2 ${activeView === "chat" ? "bg-gray-100 dark:bg-gray-700" : ""}`}
                 onClick={() => handleClick("chat")}
               >
                 <MessageSquare className="h-4 w-4" />
@@ -87,9 +92,7 @@ export default function Sidebar({
             <Link href="/actividades">
               <Button
                 variant="ghost"
-                className={`w-full justify-start gap-2 ${
-                  activeView === "actividades" ? "bg-gray-100 dark:bg-gray-700" : ""
-                }`}
+                className={`w-full justify-start gap-2 ${activeView === "actividades" ? "bg-gray-100 dark:bg-gray-700" : ""}`}
                 onClick={() => handleClick("actividades")}
               >
                 <CalendarDays className="h-4 w-4" />
@@ -107,9 +110,7 @@ export default function Sidebar({
             <Link href="/virtual-room">
               <Button
                 variant="ghost"
-                className={`w-full justify-start gap-2 ${
-                  activeView === "virtualRoom" ? "bg-gray-100 dark:bg-gray-700" : ""
-                }`}
+                className={`w-full justify-start gap-2 ${activeView === "virtualRoom" ? "bg-gray-100 dark:bg-gray-700" : ""}`}
                 onClick={() => handleClick("virtualRoom")}
               >
                 <Video className="h-4 w-4" />
@@ -127,9 +128,7 @@ export default function Sidebar({
             <Link href="/settings">
               <Button
                 variant="ghost"
-                className={`w-full justify-start gap-2 ${
-                  activeView === "settings" ? "bg-gray-100 dark:bg-gray-700" : ""
-                }`}
+                className={`w-full justify-start gap-2 ${activeView === "settings" ? "bg-gray-100 dark:bg-gray-700" : ""}`}
                 onClick={() => handleClick("settings")}
               >
                 <Settings className="h-4 w-4" />
@@ -139,9 +138,7 @@ export default function Sidebar({
             <Link href="/profile">
               <Button
                 variant="ghost"
-                className={`w-full justify-start gap-2 ${
-                  activeView === "profile" ? "bg-gray-100 dark:bg-gray-700" : ""
-                }`}
+                className={`w-full justify-start gap-2 ${activeView === "profile" ? "bg-gray-100 dark:bg-gray-700" : ""}`}
                 onClick={() => handleClick("profile")}
               >
                 <User className="h-4 w-4" />
