@@ -8,6 +8,7 @@ import {
   Video,
   Settings,
   User,
+  Clipboard, // importamos un ícono para el formulario
 } from "lucide-react";
 import React from "react";
 
@@ -94,6 +95,16 @@ export default function Sidebar({
               >
                 <User className="h-4 w-4" />
                 Profile
+              </Button>
+            </Link>
+            <Link href="/formulario">
+              <Button
+                variant="ghost"
+                className="w-full justify-start gap-2"
+                onClick={() => setActiveView("formulario")}
+              >
+                <Clipboard className="h-4 w-4" />
+                Formulario
               </Button>
             </Link>
           </div>
