@@ -9,6 +9,7 @@ import {
   Settings,
   User,
   Clipboard,
+  CalendarDays, // Icono para "Actividades"
 } from "lucide-react";
 import React from "react";
 
@@ -49,7 +50,9 @@ export default function Sidebar({
             <Link href="/dashboard">
               <Button
                 variant="ghost"
-                className={`w-full justify-start gap-2 ${activeView === "dashboard" ? "bg-gray-100 dark:bg-gray-700" : ""}`}
+                className={`w-full justify-start gap-2 ${
+                  activeView === "dashboard" ? "bg-gray-100 dark:bg-gray-700" : ""
+                }`}
                 onClick={() => handleClick("dashboard")}
               >
                 <LayoutDashboard className="h-4 w-4" />
@@ -59,15 +62,30 @@ export default function Sidebar({
             <Link href="/formulario">
               <Button
                 variant="ghost"
-                className="w-full justify-start gap-2"
+                className={`w-full justify-start gap-2 ${
+                  activeView === "formulario" ? "bg-gray-100 dark:bg-gray-700" : ""
+                }`}
                 onClick={() => handleClick("formulario")}
               >
                 <Clipboard className="h-4 w-4" />
                 Formulario
               </Button>
             </Link>
+            <Link href="/actividades">
+              <Button
+                variant="ghost"
+                className={`w-full justify-start gap-2 ${
+                  activeView === "actividades" ? "bg-gray-100 dark:bg-gray-700" : ""
+                }`}
+                onClick={() => handleClick("actividades")}
+              >
+                <CalendarDays className="h-4 w-4" />
+                Actividades
+              </Button>
+            </Link>
           </div>
         </div>
+
         {/* Sección Reuniones */}
         <div className="px-4 py-2">
           <h2 className="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
@@ -77,7 +95,9 @@ export default function Sidebar({
             <Link href="/virtual-room">
               <Button
                 variant="ghost"
-                className="w-full justify-start gap-2"
+                className={`w-full justify-start gap-2 ${
+                  activeView === "virtualRoom" ? "bg-gray-100 dark:bg-gray-700" : ""
+                }`}
                 onClick={() => handleClick("virtualRoom")}
               >
                 <Video className="h-4 w-4" />
@@ -86,6 +106,7 @@ export default function Sidebar({
             </Link>
           </div>
         </div>
+
         {/* Sección General */}
         <div className="px-4 py-2">
           <h2 className="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
@@ -95,7 +116,9 @@ export default function Sidebar({
             <Link href="/settings">
               <Button
                 variant="ghost"
-                className="w-full justify-start gap-2"
+                className={`w-full justify-start gap-2 ${
+                  activeView === "settings" ? "bg-gray-100 dark:bg-gray-700" : ""
+                }`}
                 onClick={() => handleClick("settings")}
               >
                 <Settings className="h-4 w-4" />
@@ -105,7 +128,9 @@ export default function Sidebar({
             <Link href="/profile">
               <Button
                 variant="ghost"
-                className="w-full justify-start gap-2"
+                className={`w-full justify-start gap-2 ${
+                  activeView === "profile" ? "bg-gray-100 dark:bg-gray-700" : ""
+                }`}
                 onClick={() => handleClick("profile")}
               >
                 <User className="h-4 w-4" />
