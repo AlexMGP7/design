@@ -7,7 +7,7 @@ export default function HomePage() {
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900 flex items-center justify-center px-4">
       <div className="max-w-2xl text-center">
         <h1 className="text-4xl font-bold text-gray-800 dark:text-gray-200">
-          ¡Bienvenido a nuestra Plataforma!
+          ¡Bienvenido/a a nuestra Plataforma!
         </h1>
         <p className="mt-4 text-lg text-gray-600 dark:text-gray-400">
           Nos alegra tenerte aquí. Explora nuestras soluciones y descubre cómo podemos ayudarte a potenciar el crecimiento de tu empresa.

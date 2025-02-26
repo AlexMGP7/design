@@ -21,7 +21,6 @@ export default function Header({ onToggleSidebar }: HeaderProps) {
       </Button>
       <div className="flex items-center gap-2 md:hidden">
         <Layers className="h-6 w-6 text-blue-600" />
-        <span className="text-lg font-semibold">Dashboard</span>
       </div>
       <div className="flex items-center gap-4">
         <Button variant="ghost" size="icon">
